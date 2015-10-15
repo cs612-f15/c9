@@ -1,19 +1,74 @@
-<!DOCTYPE html>
+<!doctype html>
+
 <html>
-  <head>
-    <title><%= title %></title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/css/bootstrap-responsive.min.css">    
-  </head>
-  <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %>  Very cool...</p>
-    
-    
-    
-    <script src="/js/jquery.min.js"></script>
-    <script src="/js/bootstrap.min.js"></script>
-    <script src="/js/angular.min.js"></script>
-  </body>
+
+<head>
+	<meta charset="utf-8">
+	<title>
+		<%= title %>
+	</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+	<link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap-theme.min.css">
+	<link rel="stylesheet" href="css/main.css">
+</head>
+
+<body ng-app="todoApp">
+
+	<!-- Add your site or application content here -->
+	<div class="header">
+		<div class="navbar navbar-default" role="navigation">
+			<div class="container">
+				<div class="navbar-header">
+
+					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#js-navbar-collapse">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<a class="navbar-brand" href="#/">c9todo</a>
+				</div>
+				<div class="collapse navbar-collapse" id="js-navbar-collapse">
+					<ul class="nav navbar-nav">
+						<li class="active"><a href="#/">Home</a></li>
+						<li><a ng-href="#/about">About</a></li>
+						<li><a ng-href="#/">Contact</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="container">
+		<h1><%= title %></h1>
+		<p>Welcome to
+			<%= title %> Very cool...</p>
+		<div ng-view=""></div>
+
+	</div>
+	<script src="bower_components/jquery/dist/jquery.min.js"></script>
+	<script src="bower_components/angular/angular.min.js"></script>
+	<script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+
+	<!--angular other-->
+	<script src="bower_components/angular-animate/angular-animate.js"></script>
+	<script src="bower_components/angular-aria/angular-aria.js"></script>
+	<script src="bower_components/angular-cookies/angular-cookies.js"></script>
+	<script src="bower_components/angular-messages/angular-messages.js"></script>
+	<script src="bower_components/angular-resource/angular-resource.js"></script>
+	<script src="bower_components/angular-route/angular-route.js"></script>
+	<script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+	<script src="bower_components/angular-touch/angular-touch.js"></script>
+
+	<!--My Stuff Here-->
+
+	<script src="app.js"></script>
+	<script src="js/todoFactory.js"></script>
+	<script src="js/mainCtrl.js"></script>
+	<script src="js/aboutCtrl.js"></script>
+
+
+</body>
+
 </html>
