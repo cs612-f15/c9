@@ -1,0 +1,22 @@
+<div ng-controller="MainCtrl">
+	<p>My TODO</p>
+	<div class="row">
+		<p>test data</p>
+
+	</div>
+	<table class="table table-striped table-condensed table-bordered">
+		<tr>
+			<td>ID</td>
+			<td>Title</td>
+			<td>Status</td>
+		</tr>
+		<tr ng-repeat="item in todoItems">
+			<td>{{ item.id }}</td>
+			<td>{{ item.title }}</td>
+			<td>{{ item.done }}</td>
+		</tr>
+
+	</table>
+
+
+</div>
