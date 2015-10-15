@@ -4,11 +4,19 @@
  */
 
 var express = require('express')
-  , routes = require('./routes')
-  , user = require('./routes/user')
-  , http = require('http')
-  , path = require('path');
+	, routes = require('./routes')
+	, user = require('./routes/user')
+	, http = require('http')
+	, path = require('path')
+	, fs = require('fs');
 
+/**
+ * adding items and routes for todo items
+ * 
+ */
+
+var todo = require('./routes/todo');
+var db = require('./db');
 
 var debug = require('debug')('c9:server');
 
@@ -29,12 +37,34 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // development only
 if ('development' == app.get('env')) {
-  app.use(express.errorHandler());
+	app.use(express.errorHandler());
 }
 
 app.get('/', routes.index);
 app.get('/users', user.list);
 
-http.createServer(app).listen(app.get('port'), function(){
-  console.log('Express server listening on port ' + app.get('port'));
+/** this is the map for GET */
+app.get('/api/todo', todo.list);
+
+
+// Connect to Mongo on start
+var mdbPassword = fs.readFileSync('./mdbPassword.private', {}, function (error) {
+	console.error("couldn't read the password file - create it - mdbPassword.private");
+	throw error;
 });
+
+// Connection URL
+var url = 'mongodb://cs612:' + mdbPassword + '@ds042138.mongolab.com:42138/scicoriapace';
+
+db.connect(url, function (err) {
+	if (err) {
+		console.log('Unable to connect to Mongo.')
+		process.exit(1)
+	} else {
+		http.createServer(app).listen(app.get('port'), function () {
+			console.log('Express server listening on port ' + app.get('port'));
+		})
+    }});
+
+
+

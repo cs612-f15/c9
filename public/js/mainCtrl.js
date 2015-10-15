@@ -8,9 +8,23 @@
  * Controller of the c9todoApp
  */
 angular.module('todoApp')
-  .controller('MainCtrl', ['$scope', 'TodoFactory', function ($scope, todoFactory) {
+	.controller('MainCtrl', ['$scope', 'TodoFactory', function ($scope, todoFactory) {
 
-	  $scope.todoItems = todoFactory.getTodoItems();
+		$scope.status;
+		$scope.todoItems;
+		
+		getTodoItems();
 
-  }]);
+		function getTodoItems() {
+			todoFactory.getTodoItems()
+				.success(function (todoItems) {
+					$scope.status = 'Retrieved Todo Items';
+					$scope.todoItems = todoItems;
+				})
+				.error(function (error) {
+					$scope.status = 'Error retrieving customers! ' + error.message;
+				});
+		}
+
+	}]);
 
