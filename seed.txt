@@ -1,0 +1,21 @@
+./mongoimport -h ds042138.mongolab.com:42138 -d scicoriapace -c todo -u scicoriapace -p pppp --jsonArray < seed.json
+
+
+
+
+ongoDB shell version: 3.0.6
+connecting to: ds042138.mongolab.com:42138/scicoriapace
+rs-ds042138:PRIMARY> 
+rs-ds042138:PRIMARY> 
+rs-ds042138:PRIMARY> db.todo.find()
+{ "_id" : ObjectId("561ffa4c5bc1791ff5df21e8"), "id" : 2, "title" : "dohomework", "done" : false }
+{ "_id" : ObjectId("561ffa4c5bc1791ff5df21e9"), "id" : 3, "title" : "dohomework", "done" : false }
+{ "_id" : ObjectId("561ffa4c5bc1791ff5df21ea"), "id" : 1, "title" : "dohomework", "done" : false }
+{ "_id" : ObjectId("561ffa4c5bc1791ff5df21eb"), "id" : 1, "title" : "dohomework", "done" : false }
+{ "_id" : ObjectId("561ffa4c5bc1791ff5df21ec"), "id" : 4, "title" : "dohomework", "done" : false }
+{ "_id" : ObjectId("561ffa4c5bc1791ff5df21ed"), "id" : 5, "title" : "dohomework", "done" : false }
+rs-ds042138:PRIMARY> 
+
+
+
+./mongo ds042138.mongolab.com:42138/scicoriapace -u scicoriapace -p ppp 

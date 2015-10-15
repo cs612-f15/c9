@@ -8,11 +8,10 @@
  * Factory in the c9todoApp.
  */
 angular.module('todoApp')
-	.factory('TodoFactory', function () {
+	.factory('TodoFactory', ['$http', function ($http) {
 		// Service logic
 		// ...
-
-		var todoItems = [
+		var todoItemsFake = [
 			{ 'id': 1, 'title': 'do homework', 'done': false },
 			{ 'id': 1, 'title': 'do homework', 'done': false },
 			{ 'id': 2, 'title': 'do homework', 'done': false },
@@ -22,10 +21,21 @@ angular.module('todoApp')
 		];
 	
 
+		var urlBase = '/api/todo';
+
 		// Public API here
 		return {
-			getTodoItems: function () {
-				return todoItems;
+			getTodoFakeItems: function () {
+				return todoItemsFake;
+			},
+			
+			/// returns a Promise...
+			getTodoItems: function(){
+				return $http.get(urlBase);
 			}
+			
 		};
-	});
+		
+		
+		
+	}]);

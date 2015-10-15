@@ -10,6 +10,14 @@ var express = require('express')
   , path = require('path');
 
 
+/**
+ * adding items and routes for todo items
+ * 
+ */
+
+var todo = require('./routes/todo');
+
+
 var debug = require('debug')('c9:server');
 
 var app = express();
@@ -34,6 +42,10 @@ if ('development' == app.get('env')) {
 
 app.get('/', routes.index);
 app.get('/users', user.list);
+
+/** this is the map for GET */
+app.get('/api/todo', todo.list);
+
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
