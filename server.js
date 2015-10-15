@@ -9,6 +9,9 @@ var express = require('express')
   , http = require('http')
   , path = require('path');
 
+
+var debug = require('debug')('c9:server');
+
 var app = express();
 
 // all environments

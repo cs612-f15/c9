@@ -2,12 +2,26 @@
   "name": "application-name",
   "version": "0.0.1",
   "private": true,
+  "main": "server.js",
   "scripts": {
-    "start": "node server.js"
+    "start": "node server.js",
+    "nomon": "SET DEBUG=c9:* & npm start",
+    "debug": "SET DEBUG=c9:* & node ./node_modules/nodemon/bin/nodemon.js ./server.js",
+    "postinstall": "bower install"
   },
+  "devDependencies": {
+    "gulp": "^3.9.0",
+    "nodemon": "^1.7.1"
+  },
+
   "dependencies": {
     "angularjs": "0.0.1",
     "ejs": "*",
-    "express": "3.2.6"
+    "express": "3.2.6",
+	"body-parser": "^1.14.1",
+    "cookie-parser": "^1.4.0",
+    "debug": "^2.2.0",    
+	"morgan": "^1.6.1",
+    "serve-favicon": "^2.3.0"
   }
 }
