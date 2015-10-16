@@ -12,6 +12,11 @@ exports.list = function (req, res) {
 			res.send({'error' : err});
 			return;
 		}
+		
+		for (var i = 0, len = docs.length; i < len; i++) {
+			docs[i].done = docs[i].done == true ? 'yes' : 'no';
+		}
+		
 		res.send(docs);
 	})
 
